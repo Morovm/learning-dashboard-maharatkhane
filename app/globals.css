@@ -57,6 +57,21 @@
     line-height: 1.4;
     letter-spacing: 0.01em;
   }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 @layer components {
@@ -76,7 +91,7 @@
   }
 
   .card {
-    @apply bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6 hover:border-yellow-500 transition-colors duration-200;
+    @apply bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6 hover:border-yellow-500 transition-all duration-200;
   }
 
   .input-field {
@@ -94,5 +109,21 @@
 
   .mobile-grid {
     @apply grid gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  /* Smooth accordion animations */
+  .accordion-content {
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  .accordion-content.expanded {
+    max-height: 1000px;
+    opacity: 1;
+  }
+
+  .accordion-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
   }
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X, LogOut, Home, FolderOpen, BookOpen, Library, Mail, LogIn } from "lucide-react"
+import { Menu, X, LogOut, Home, FolderOpen, BookOpen, Library, Mail, LogIn, Newspaper, Briefcase } from "lucide-react"
 import Image from "next/image"
 
 interface NavbarProps {
@@ -17,6 +17,8 @@ const navItems = [
   { id: "projects", label: "پروژه‌ها", icon: FolderOpen },
   { id: "learning", label: "آموزش‌ها", icon: BookOpen },
   { id: "resources", label: "منابع", icon: Library },
+  { id: "news", label: "اخبار AI", icon: Newspaper },
+  { id: "counseling", label: "مشاوره شغلی", icon: Briefcase },
   { id: "contact", label: "تماس با ما", icon: Mail },
 ]
 

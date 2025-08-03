@@ -1,6 +1,7 @@
 "use client"
 
-import { ArrowLeft, Sparkles, Target, TrendingUp, BookOpen } from "lucide-react"
+import { ArrowLeft, Target, TrendingUp, BookOpen } from "lucide-react"
+import Image from "next/image"
 
 interface HeroSectionProps {
   onAuthRequired: (action: () => void) => void
@@ -19,7 +20,13 @@ export default function HeroSection({ onAuthRequired }: HeroSectionProps) {
         <div className="text-center mb-12 sm:mb-16">
           <div className="flex justify-center mb-4 sm:mb-6">
             <div className="p-3 sm:p-4 bg-yellow-500 rounded-full">
-              <Sparkles className="w-8 h-8 sm:w-12 sm:h-12 text-black" />
+              <Image
+                src="/maharatkhane-logo.jpg"
+                alt="مهارت خانه البرز"
+                width={48}
+                height={48}
+                className="w-8 h-8 sm:w-12 sm:h-12 rounded-full object-cover"
+              />
             </div>
           </div>
 

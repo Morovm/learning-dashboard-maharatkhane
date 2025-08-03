@@ -13,6 +13,7 @@ const validCredentials = [
   { username: "mahdi morovati", password: "1" },
   { username: "amirhossein salek", password: "1" },
   { username: "parsa esmaili", password: "1" },
+  { username: "erfan mohammadian", password: "1" },
 ]
 
 export default function LoginModal({ onLoginSuccess, onCancel }: LoginModalProps) {

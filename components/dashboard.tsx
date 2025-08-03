@@ -3,11 +3,15 @@
 import { useState } from "react"
 import Navbar from "./navbar"
 import HeroSection from "./hero-section"
-import ProjectsSection from "./projects-section"
 import LearningSection from "./learning-section"
 import ResourcesSection from "./resources-section"
 import ContactSection from "./contact-section"
 import ChatBot from "./chatbot"
+import CareerCounseling from "./career-counseling"
+import AllProjectsSection from "./all-projects-section"
+import CategorizedProjectsSection from "./categorized-projects-section"
+import RealAINewsSection from "./real-ai-news-section"
+import SimpleFooter from "./simple-footer"
 
 interface DashboardProps {
   onAuthRequired: (action: () => void) => void
@@ -25,15 +29,20 @@ export default function Dashboard({ onAuthRequired, isAuthenticated, onLogout, o
         return (
           <>
             <HeroSection onAuthRequired={onAuthRequired} />
-            <ProjectsSection onAuthRequired={onAuthRequired} />
+            <AllProjectsSection onAuthRequired={onAuthRequired} />
+            <RealAINewsSection />
           </>
         )
       case "projects":
-        return <ProjectsSection onAuthRequired={onAuthRequired} />
+        return <CategorizedProjectsSection onAuthRequired={onAuthRequired} />
       case "learning":
         return <LearningSection onAuthRequired={onAuthRequired} />
       case "resources":
         return <ResourcesSection onAuthRequired={onAuthRequired} />
+      case "news":
+        return <RealAINewsSection />
+      case "counseling":
+        return <CareerCounseling />
       case "contact":
         return <ContactSection />
       default:
@@ -42,7 +51,7 @@ export default function Dashboard({ onAuthRequired, isAuthenticated, onLogout, o
   }
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gray-900 flex flex-col">
       <Navbar
         activeSection={activeSection}
         setActiveSection={setActiveSection}
@@ -50,7 +59,8 @@ export default function Dashboard({ onAuthRequired, isAuthenticated, onLogout, o
         onLogout={onLogout}
         onLoginClick={onLoginClick}
       />
-      <main className="pt-14 sm:pt-16">{renderSection()}</main>
+      <main className="pt-14 sm:pt-16 flex-1">{renderSection()}</main>
+      <SimpleFooter />
       <ChatBot />
     </div>
   )
