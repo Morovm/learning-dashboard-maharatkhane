@@ -8,6 +8,7 @@ import ResourcesSection from "./resources-section"
 import ContactSection from "./contact-section"
 import AIChatbotWidget from "./ai-chatbot-widget"
 import EnhancedCareerCounseling from "./enhanced-career-counseling"
+import EnhancedCareerQuiz from "./enhanced-career-quiz"
 import AllProjectsSection from "./all-projects-section"
 import EnhancedAINews from "./enhanced-ai-news"
 import SimpleFooter from "./simple-footer"
@@ -41,7 +42,12 @@ export default function EnhancedDashboard({ onAuthRequired, isAuthenticated, onL
       case "news":
         return <EnhancedAINews />
       case "counseling":
-        return <EnhancedCareerCounseling />
+        return (
+          <>
+            <EnhancedCareerCounseling />
+            <EnhancedCareerQuiz />
+          </>
+        )
       case "contact":
         return <ContactSection />
       default:
