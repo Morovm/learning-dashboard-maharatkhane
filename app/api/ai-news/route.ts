@@ -1,5 +1,4 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { AbortSignal } from "abort-controller"
 
 // Add this function to get yesterday's date for fresher news
 function getYesterdayDate() {
