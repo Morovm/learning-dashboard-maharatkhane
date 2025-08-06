@@ -1,15 +1,41 @@
-import type React from "react"
-import type { Metadata } from "next"
-import "./globals.css"
 
+import type { Metadata } from "next"
+import { Geist, Geist_Mono } from "next/font/google"
+import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/sonner"
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: 'swap',
+  preload: true,
+})
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: 'swap',
+  preload: true,
+})
 
 export const metadata: Metadata = {
-  title: "داشبورد آموزشی مهارتخانه البرز",
-  description: "پلتفرم آموزشی پروژه‌های فریلنسری هوش مصنوعی",
-  generator: 'Next.js',
-  keywords: 'هوش مصنوعی, آموزش, مهارتخانه البرز, AI, یادگیری ماشین',
-  authors: [{ name: 'مهارتخانه البرز' }],
-  viewport: 'width=device-width, initial-scale=1'
+  title: "مهارتخانه البرز - آموزش هوش مصنوعی",
+  description: "پلتفرم جامع آموزش هوش مصنوعی با پروژه‌های عملی و مشاوره تخصصی",
+  keywords: "هوش مصنوعی، آموزش، AI، یادگیری ماشین، پایتون",
+  authors: [{ name: "مهارتخانه البرز" }],
+  openGraph: {
+    title: "مهارتخانه البرز - آموزش هوش مصنوعی",
+    description: "پلتفرم جامع آموزش هوش مصنوعی با پروژه‌های عملی",
+    type: "website",
+    locale: "fa_IR",
+  },
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 }
 
 export default function RootLayout({
@@ -18,15 +44,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="fa" dir="rtl" suppressHydrationWarning>
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-          crossOrigin="anonymous"
-        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta httpEquiv="Content-Security-Policy" content="font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;" />
       </head>
-      <body className="bg-gray-900 text-white min-h-screen">{children}</body>
+      <body className={`${geist.variable} ${geistMono.variable} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          {children}
+          <Toaster />
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
