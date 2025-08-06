@@ -1,0 +1,21 @@
+modules = ["nodejs-20", "web"]
+run = "npm run dev"
+
+[nix]
+channel = "stable-25_05"
+
+[deployment]
+run = ["sh", "-c", "npm start"]
+build = ["sh", "-c", "npm run build"]
+
+[workflows]
+runButton = "Next.js Dev Server"
+
+[[workflows.workflow]]
+name = "Next.js Dev Server"
+author = 46057942
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
