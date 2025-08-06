@@ -1,0 +1,121 @@
+{
+  "data-analyst": {
+    "title": "تحلیلگر داده",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple-choice",
+        "question": "کدام یک از ابزارهای زیر برای تحلیل داده استفاده می‌شود؟",
+        "options": ["Python", "Photoshop", "Word", "PowerPoint"],
+        "correct": 0,
+        "points": 10
+      },
+      {
+        "id": 2,
+        "type": "short-answer",
+        "question": "تفاوت بین Mean و Median را توضیح دهید.",
+        "points": 15
+      },
+      {
+        "id": 3,
+        "type": "code",
+        "question": "کدی بنویسید که میانگین یک لیست از اعداد را محاسبه کند.",
+        "language": "python",
+        "points": 20
+      },
+      {
+        "id": 4,
+        "type": "multiple-choice",
+        "question": "SQL مخفف چیست؟",
+        "options": ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"],
+        "correct": 0,
+        "points": 10
+      },
+      {
+        "id": 5,
+        "type": "short-answer",
+        "question": "چرا Data Visualization مهم است؟",
+        "points": 15
+      }
+    ]
+  },
+  "content-creator": {
+    "title": "تولیدکننده محتوا",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple-choice",
+        "question": "کدام پلتفرم برای ایجاد محتوای ویدیویی مناسب است؟",
+        "options": ["YouTube", "LinkedIn", "هر دو", "هیچکدام"],
+        "correct": 2,
+        "points": 10
+      },
+      {
+        "id": 2,
+        "type": "short-answer",
+        "question": "استراتژی محتوا چیست و چرا مهم است؟",
+        "points": 15
+      },
+      {
+        "id": 3,
+        "type": "multiple-choice",
+        "question": "کدام ابزار برای طراحی گرافیک استفاده می‌شود؟",
+        "options": ["Canva", "Excel", "Notepad", "Calculator"],
+        "correct": 0,
+        "points": 10
+      },
+      {
+        "id": 4,
+        "type": "short-answer",
+        "question": "چگونه می‌توان engagement rate را افزایش داد؟",
+        "points": 15
+      },
+      {
+        "id": 5,
+        "type": "short-answer",
+        "question": "تفاوت بین organic و paid content چیست؟",
+        "points": 20
+      }
+    ]
+  },
+  "ai-developer": {
+    "title": "توسعه‌دهنده هوش مصنوعی",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple-choice",
+        "question": "کدام زبان برنامه‌نویسی برای AI محبوب است؟",
+        "options": ["Python", "HTML", "CSS", "PowerPoint"],
+        "correct": 0,
+        "points": 10
+      },
+      {
+        "id": 2,
+        "type": "code",
+        "question": "یک تابع ساده برای پیش‌پردازش متن بنویسید.",
+        "language": "python",
+        "points": 25
+      },
+      {
+        "id": 3,
+        "type": "short-answer",
+        "question": "تفاوت بین Supervised و Unsupervised Learning چیست؟",
+        "points": 20
+      },
+      {
+        "id": 4,
+        "type": "multiple-choice",
+        "question": "کدام کتابخانه برای Machine Learning استفاده می‌شود؟",
+        "options": ["scikit-learn", "jQuery", "Bootstrap", "React"],
+        "correct": 0,
+        "points": 10
+      },
+      {
+        "id": 5,
+        "type": "short-answer",
+        "question": "Neural Network چیست و چگونه کار می‌کند؟",
+        "points": 25
+      }
+    ]
+  }
+}

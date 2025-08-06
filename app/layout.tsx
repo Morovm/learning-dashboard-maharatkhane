@@ -1,14 +1,15 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "داشبورد آموزشی مهارتخانه البرز",
   description: "پلتفرم آموزشی پروژه‌های فریلنسری هوش مصنوعی",
-    generator: 'v0.dev'
+  generator: 'Next.js',
+  keywords: 'هوش مصنوعی, آموزش, مهارتخانه البرز, AI, یادگیری ماشین',
+  authors: [{ name: 'مهارتخانه البرز' }],
+  viewport: 'width=device-width, initial-scale=1'
 }
 
 export default function RootLayout({
@@ -22,9 +23,10 @@ export default function RootLayout({
         <link
           href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
+          crossOrigin="anonymous"
         />
       </head>
-      <body className={`${inter.className} bg-gray-900 text-white min-h-screen`}>{children}</body>
+      <body className="bg-gray-900 text-white min-h-screen">{children}</body>
     </html>
   )
 }
