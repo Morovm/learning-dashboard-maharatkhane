@@ -1,0 +1,35 @@
+Create a modern, responsive Learning Dashboard for Maharatkhane Alborz using Next.js, hosted on Vercel or Replit, improving the existing dashboard at https://learning-dashboard-maharatkhane.vercel.app/. Retain all existing sections (Home, Projects, Courses, AI News, Resources, Career Consultation, Contact Us) and their styling, including the current fonts used in the site. Fix font loading issues (e.g., MIME type or CORS errors) and enhance mobile responsiveness to match the desktop experience in terms of aesthetics and usability. Use the Hugging Face Inference API for AI functionalities. Below are the requirements:
+
+1. **Mobile Responsiveness and Aesthetics**:
+   - Ensure the site is fully responsive, looking as visually appealing and user-friendly on mobile as on desktop.
+   - Display projects in a grid layout with at least 2 projects side-by-side on mobile screens (e.g., 2-column grid for screens ≥ 320px). Use Tailwind CSS or CSS Grid for responsive design.
+   - Design the navigation menu to appear horizontally on mobile (similar to desktop) with optimized spacing, font sizes, and touch-friendly interactions. Avoid hamburger menus unless necessary for very small screens (< 320px).
+   - Enhance mobile aesthetics with smooth animations, consistent spacing, and larger, readable font sizes. Ensure colors, fonts, and layout are cohesive across devices.
+
+2. **Font Handling**:
+   - Use the existing fonts from the current site (do not introduce new fonts).
+   - Fix any font loading issues (e.g., "Failed to load fonts.googleapis.com due to MIME type or CORS") by ensuring correct MIME types, proper CSP headers, or hosting fonts locally if needed.
+   - Ensure fonts display consistently and correctly on mobile and desktop.
+
+3. **Interactive Multi-Step Form**:
+   - Add a multi-step form triggered by clicking "Start Learning" (شروع یادگیری), similar to Google Forms but integrated into the site, to collect:
+     - Personal details: Name, Family Name, Gender, Education Level, Field of Study, Employment Status, Contact Number, Province, Age.
+     - Professional background: Job history, Current role, Years of experience.
+     - Skills and interests: Courses attended, Competitions participated in, Familiarity with AI tools (e.g., ChatGPT, Canva AI), Educational interests.
+   - Use `react-hook-form` for validation and state management.
+   - Design: Clean, modern, with progress indicators (e.g., "Step 1/3"). Fully responsive with touch-friendly inputs on mobile.
+   - After submission, display a "Results" page recommending AI project courses (e.g., "Text Summarization," "Chatbot Development") based on user interests using rule-based logic (e.g., map "interest in text generation" to "Text Summarization" course). Store responses temporarily in local storage or Supabase.
+
+4. **Career Consultation Section**:
+   - Enhance the Career Consultation section with a quiz-like interface similar to HackerRank.
+   - Users select a job role (e.g., "Data Analyst," "Content Creator") and answer 5–10 questions (multiple-choice, short-answer, or coding tasks).
+   - Use the Hugging Face Inference API (https://api-inference.huggingface.co) with the provided token (`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`) stored in `.env.local` as `HUGGINGFACE_API_TOKEN`. Use `bert-base-multilingual-cased` for text answer evaluation and `codebert-base` for code evaluation.
+   - Display a score (e.g., "80/100") and personalized feedback (e.g., "Improve Python skills for data analysis").
+   - Store questions in a JSON file or Supabase database.
+   - Handle API errors (e.g., rate limits, timeouts) with user-friendly Persian messages (e.g., "مشکلی در ارتباط با سرور پیش آمد، لطفاً دوباره تلاش کنید").
+
+5. **AI News Section**:
+   - Replace GNews API with a custom web scraping solution for Persian AI news from sources like Zoomit.ir or Hamshahri Online, as they lack public APIs.
+   - Use Next.js API routes with `cheerio` or `puppeteer` to scrape news (title, 50-100 word summary, date, source URL). If RSS feeds are available, use them instead.
+   - Display 8 articles per page in a grid layout with title, summary, date, and "Read More" button linking to the original source. Include source attribution (e.g., "Source: Zoomit.ir").
+   - Implement pagination using `react-paginate` to access news up to 20 days old.
