@@ -23,7 +23,7 @@ Create a modern, responsive Learning Dashboard for Maharatkhane Alborz using Nex
 4. **Career Consultation Section**:
    - Enhance the Career Consultation section with a quiz-like interface similar to HackerRank.
    - Users select a job role (e.g., "Data Analyst," "Content Creator") and answer 5–10 questions (multiple-choice, short-answer, or coding tasks).
-   - Use the Hugging Face Inference API (https://api-inference.huggingface.co) with the provided token (`***REMOVED***`) stored in `.env.local` as `HUGGINGFACE_API_TOKEN`. Use `bert-base-multilingual-cased` for text answer evaluation and `codebert-base` for code evaluation.
+   - Use the Hugging Face Inference API (https://api-inference.huggingface.co) with the provided token () stored in `.env.local` as `HUGGINGFACE_API_TOKEN`. Use `bert-base-multilingual-cased` for text answer evaluation and `codebert-base` for code evaluation.
    - Display a score (e.g., "80/100") and personalized feedback (e.g., "Improve Python skills for data analysis").
    - Store questions in a JSON file or Supabase database.
    - Handle API errors (e.g., rate limits, timeouts) with user-friendly Persian messages (e.g., "مشکلی در ارتباط با سرور پیش آمد، لطفاً دوباره تلاش کنید").
