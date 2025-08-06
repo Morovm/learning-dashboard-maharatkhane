@@ -4,6 +4,8 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { ChevronLeft, ChevronRight, User, Briefcase, BookOpen, CheckCircle } from "lucide-react"
 
+// This schema is from the original code and will be used as the base for modifications.
+// The new schema from the 'changes' section will be integrated conceptually where applicable.
 interface FormData {
   // Personal Details
   firstName: string
@@ -15,17 +17,27 @@ interface FormData {
   contactNumber: string
   province: string
   age: number
-  
+
   // Professional Background
   jobHistory: string
   currentRole: string
   yearsOfExperience: number
-  
+
   // Skills and Interests
   coursesAttended: string[]
   competitions: string[]
   aiToolsFamiliarity: string[]
   educationalInterests: string[]
+}
+
+// Course recommendations based on interests (from the changes)
+const courseRecommendations = {
+  "text-generation": ["تولید محتوا با AI", "خلاصه‌سازی متن", "ترجمه هوشمند"],
+  "image-processing": ["پردازش تصویر", "تشخیص اشیاء", "تولید تصویر با AI"],
+  "data-analysis": ["تحلیل داده", "یادگیری ماشین", "علم داده کاربردی"],
+  "chatbot": ["توسعه چت‌بات", "پردازش زبان طبیعی", "مکالمه هوشمند"],
+  "web-development": ["توسعه وب", "API Design", "Full-Stack Development"],
+  "mobile-development": ["توسعه موبایل", "React Native", "Flutter"]
 }
 
 interface MultiStepFormProps {
@@ -47,7 +59,7 @@ const interests = ["تولید محتوا", "تحلیل داده", "طراحی �
 export default function MultiStepForm({ onComplete, onClose }: MultiStepFormProps) {
   const [currentStep, setCurrentStep] = useState(1)
   const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<FormData>()
-  
+
   const totalSteps = 3
 
   const nextStep = () => {
@@ -88,7 +100,7 @@ export default function MultiStepForm({ onComplete, onClose }: MultiStepFormProp
               ✕
             </button>
           </div>
-          
+
           {/* Progress Bar */}
           <div className="flex items-center space-x-4 space-x-reverse">
             {[1, 2, 3].map((step) => (
@@ -102,7 +114,7 @@ export default function MultiStepForm({ onComplete, onClose }: MultiStepFormProp
               </div>
             ))}
           </div>
-          
+
           <div className="mt-2 text-sm">
             مرحله {currentStep} از {totalSteps}
           </div>

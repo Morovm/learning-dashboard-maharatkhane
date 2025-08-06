@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Menu, X, LogOut, Home, FolderOpen, BookOpen, Library, Mail, LogIn, Newspaper, Briefcase } from "lucide-react"
 import Image from "next/image"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 interface NavbarProps {
   activeSection: string
