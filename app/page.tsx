@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Dashboard from "@/components/dashboard"
+import EnhancedDashboard from "@/components/enhanced-dashboard"
 import LoginModal from "@/components/login-modal"
 
 export default function Home() {
@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <>
-      <Dashboard
+      <EnhancedDashboard
         onAuthRequired={handleAuthRequired}
         isAuthenticated={isAuthenticated}
         onLogout={handleLogout}
