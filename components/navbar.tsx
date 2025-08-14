@@ -1,9 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X, LogOut, Home, FolderOpen, BookOpen, Library, Mail, LogIn, Newspaper, Briefcase } from "lucide-react"
+import { Menu, X, LogOut, Home, FolderOpen, BookOpen, Library, Mail, LogIn, Newspaper, Briefcase, User } from "lucide-react"
 import Image from "next/image"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useAuth } from "@/contexts/auth-context"
+import AuthModal from "./auth-modal"
 
 interface NavbarProps {
   activeSection: string
@@ -26,11 +28,14 @@ const navItems = [
 export default function Navbar({
   activeSection,
   setActiveSection,
-  isAuthenticated,
-  onLogout,
-  onLoginClick,
+  isAuthenticated: _,
+  onLogout: __,
+  onLoginClick: ___,
 }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [showAuthModal, setShowAuthModal] = useState(false)
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login')
+  const { isAuthenticated, logout, user } = useAuth()
 
   const handleNavClick = (sectionId: string) => {
     setActiveSection(sectionId)
@@ -79,20 +84,32 @@ export default function Navbar({
               })}
 
               {/* Authentication Button */}
+              {/* User Account */}
+            <div className="flex items-center space-x-2 space-x-reverse">
               {isAuthenticated ? (
-                <button
-                  onClick={onLogout}
-                  className="flex items-center px-2 py-2 lg:px-3 lg:py-2 rounded-md text-sm font-medium persian-body text-red-400 hover:bg-red-900/20 hover:text-red-300 transition-colors duration-200"
-                >
-                  <LogOut className="w-4 h-4 ml-1 lg:ml-2" />
-                  خروج
-                </button>
+                <div className="flex items-center space-x-2 space-x-reverse">
+                  <div className="text-sm text-white persian-body">{user?.fullName || user?.username}</div>
+                  <button
+                    onClick={logout}
+                    className="p-2 text-gray-400 hover:text-white transition-colors"
+                    title="خروج"
+                  >
+                    <LogOut className="w-5 h-5" />
+                  </button>
+                </div>
               ) : (
-                <button onClick={onLoginClick} className="btn-login flex items-center">
-                  <LogIn className="w-4 h-4 ml-1 lg:ml-2" />
-                  ورود
+                <button
+                  onClick={() => {
+                    setAuthMode('login')
+                    setShowAuthModal(true)
+                  }}
+                  className="p-2 text-gray-400 hover:text-white transition-colors"
+                  title="ورود"
+                >
+                  <User className="w-5 h-5" />
                 </button>
               )}
+            </div>
             </div>
           </div>
 
@@ -130,9 +147,10 @@ export default function Navbar({
               )
             })}
 
+            {/* Mobile Auth Button */}
             {isAuthenticated ? (
               <button
-                onClick={onLogout}
+                onClick={logout}
                 className="flex items-center w-full px-3 py-3 rounded-md text-base font-medium persian-body text-red-400 hover:bg-red-900/20 hover:text-red-300 transition-colors duration-200 mobile-text-spacing"
               >
                 <LogOut className="w-5 h-5 ml-3" />
@@ -140,16 +158,26 @@ export default function Navbar({
               </button>
             ) : (
               <button
-                onClick={onLoginClick}
+                onClick={() => {
+                  setAuthMode('login')
+                  setShowAuthModal(true)
+                }}
                 className="flex items-center w-full px-3 py-3 rounded-md text-base font-medium bg-yellow-500 hover:bg-yellow-600 text-black transition-colors duration-200 mobile-text-spacing"
               >
-                <LogIn className="w-5 h-5 ml-3" />
+                <User className="w-5 h-5 ml-3" />
                 ورود
               </button>
             )}
           </div>
         </div>
       )}
+
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        mode={authMode}
+        onModeChange={setAuthMode}
+      />
     </nav>
   )
 }

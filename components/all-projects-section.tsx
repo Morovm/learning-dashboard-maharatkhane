@@ -13,6 +13,8 @@ import {
   TrendingUp,
   Camera,
 } from "lucide-react"
+import ProtectedLink from "./protected-link"
+import DiscoverTalentButton from "./discover-talent-button"
 
 interface ProjectsSectionProps {
   onAuthRequired: (action: () => void) => void
@@ -128,7 +130,7 @@ export default function AllProjectsSection({ onAuthRequired }: ProjectsSectionPr
   return (
     <section className="mobile-section bg-gray-900 mobile-container">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 persian-text mobile-heading-spacing">
             پروژه‌های هوش مصنوعی
           </h2>

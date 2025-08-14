@@ -5,6 +5,7 @@ import { ArrowLeft, Target, TrendingUp, BookOpen } from "lucide-react"
 import Image from "next/image"
 import MultiStepForm from "./multi-step-form"
 import CourseRecommendations from "./course-recommendations"
+import DiscoverTalentButton from "./discover-talent-button" // Assuming DiscoverTalentButton is in a separate file
 
 interface FormData {
   firstName: string
@@ -74,13 +75,18 @@ export default function EnhancedHeroSection() {
               با ما، راحت‌ترین پروژه‌های هوش مصنوعی را بیابید و با یادگیری مهارت‌های لازم، درآمد مناسبی کسب کنید.
             </p>
 
-            <button 
-              onClick={handleStartLearning}
-              className="btn-primary persian-body inline-flex items-center group hover:scale-105 transform transition-all duration-200"
-            >
-              شروع یادگیری
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:translate-x-1 transition-transform duration-200" />
-            </button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <DiscoverTalentButton size="lg" className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl hover:shadow-yellow-500/20 w-full sm:w-auto mobile-button" />
+              <button
+                onClick={handleStartLearning}
+                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black font-bold text-base sm:text-lg rounded-xl transition-all duration-300 persian-body w-full sm:w-auto mobile-button"
+              >
+                شروع یادگیری
+              </button>
+              <button className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black font-bold text-base sm:text-lg rounded-xl transition-all duration-300 persian-body w-full sm:w-auto mobile-button">
+                مشاهده پروژه‌ها
+              </button>
+            </div>
           </div>
 
           {/* Feature Cards */}

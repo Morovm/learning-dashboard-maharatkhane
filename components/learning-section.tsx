@@ -1,7 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronDown, ExternalLink, BookOpen, Video, FileText } from "lucide-react"
+import { ChevronDown, ChevronUp, BookOpen, Video, FileText, ExternalLink } from "lucide-react"
+import ProtectedLink from "./protected-link"
+import DiscoverTalentButton from "./discover-talent-button"
 
 interface LearningSectionProps {
   onAuthRequired: (action: () => void) => void
@@ -236,24 +238,21 @@ export default function LearningSection({ onAuthRequired }: LearningSectionProps
                                 منابع یادگیری
                               </h4>
                               <div className="space-y-2">
-                                {topic.resources.map((resource, resourceIndex) => {
-                                  const ResourceIcon = getResourceIcon(resource.type)
-                                  return (
-                                    <button
-                                      key={resourceIndex}
-                                      onClick={() => handleResourceClick(resource.url, resource.title)}
-                                      className="flex items-center justify-between w-full p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors duration-200 group"
-                                    >
-                                      <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 group-hover:text-yellow-400" />
-                                      <div className="flex items-center flex-1 mr-2 sm:mr-3">
-                                        <span className="english-text text-xs sm:text-sm mobile-text-spacing">
-                                          {resource.title}
-                                        </span>
-                                        <ResourceIcon className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 mr-2" />
-                                      </div>
-                                    </button>
-                                  )
-                                })}
+                                {topic.resources.map((resource, resIndex) => (
+                                  <ProtectedLink
+                                    key={resIndex}
+                                    href={resource.url}
+                                    className="flex items-center justify-between w-full p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors duration-200 group"
+                                  >
+                                    <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 group-hover:text-yellow-400" />
+                                    <div className="flex items-center flex-1 mr-2 sm:mr-3">
+                                      <span className="english-text text-xs sm:text-sm mobile-text-spacing">
+                                        {resource.title}
+                                      </span>
+                                      <ResourceIcon className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 mr-2" />
+                                    </div>
+                                  </ProtectedLink>
+                                ))}
                               </div>
                             </div>
 

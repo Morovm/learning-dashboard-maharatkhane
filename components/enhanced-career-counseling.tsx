@@ -43,6 +43,14 @@ interface QuizResult {
   role: string
 }
 
+// Placeholder for DiscoverTalentButton, assuming it's defined elsewhere or will be added.
+// For this example, we'll define a simple placeholder.
+const DiscoverTalentButton = () => (
+  <button className="mt-4 px-6 py-3 bg-yellow-500 text-black rounded-lg hover:bg-yellow-600 transition-colors duration-200 font-medium persian-body mx-auto block">
+    کشف استعدادها
+  </button>
+);
+
 export default function EnhancedCareerCounseling() {
   const [selectedRole, setSelectedRole] = useState<string | null>(null)
   const [showQuiz, setShowQuiz] = useState(false)
@@ -95,6 +103,7 @@ export default function EnhancedCareerCounseling() {
           <p className="text-lg sm:text-xl text-gray-400 persian-body max-w-3xl mx-auto mobile-text-spacing px-2">
             مهارت‌های خود را در مشاغل مختلف ارزیابی کنید و بازخورد شخصی‌سازی شده دریافت کنید
           </p>
+          <DiscoverTalentButton />
         </div>
 
         {!quizResult ? (

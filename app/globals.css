@@ -126,4 +126,12 @@
     opacity: 0;
     overflow: hidden;
   }
+
+  .mobile-button {
+    min-height: 48px;
+  }
+
+  .checkmark {
+    color: green;
+  }
 }

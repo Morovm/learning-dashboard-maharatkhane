@@ -1,0 +1,74 @@
+
+{
+  "data-analyst": {
+    "title": "تحلیلگر داده",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple-choice",
+        "question": "کدام کتابخانه Python برای تحلیل داده بیشتر استفاده می‌شود؟",
+        "options": ["NumPy", "Pandas", "Matplotlib", "Seaborn"],
+        "correct": 1,
+        "points": 10
+      },
+      {
+        "id": 2,
+        "type": "short-answer",
+        "question": "تفاوت بین Mean و Median را در یک جمله توضیح دهید.",
+        "points": 15
+      },
+      {
+        "id": 3,
+        "type": "coding",
+        "question": "کدی بنویسید که میانگین یک لیست اعداد را محاسبه کند.",
+        "points": 20
+      }
+    ]
+  },
+  "content-creator": {
+    "title": "تولیدکننده محتوا",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple-choice",
+        "question": "کدام ابزار برای تولید محتوا مناسب است؟",
+        "options": ["ChatGPT", "Excel", "هر دو", "هیچکدام"],
+        "correct": 2,
+        "points": 10
+      },
+      {
+        "id": 2,
+        "type": "short-answer",
+        "question": "استراتژی محتوا چیست و چرا مهم است؟",
+        "points": 15
+      },
+      {
+        "id": 3,
+        "type": "multiple-choice",
+        "question": "کدام ابزار برای طراحی گرافیک استفاده می‌شود؟",
+        "options": ["Canva", "Excel", "Notepad", "Calculator"],
+        "correct": 0,
+        "points": 10
+      }
+    ]
+  },
+  "ai-developer": {
+    "title": "توسعه‌دهنده هوش مصنوعی",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple-choice",
+        "question": "کدام الگوریتم برای طبقه‌بندی تصاویر مناسب‌تر است؟",
+        "options": ["Linear Regression", "CNN", "K-Means", "Decision Tree"],
+        "correct": 1,
+        "points": 15
+      },
+      {
+        "id": 2,
+        "type": "short-answer",
+        "question": "تفاوت بین Supervised و Unsupervised Learning را توضیح دهید.",
+        "points": 20
+      }
+    ]
+  }
+}

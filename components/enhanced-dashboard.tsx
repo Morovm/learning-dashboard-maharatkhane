@@ -15,12 +15,9 @@ import SimpleFooter from "./simple-footer"
 
 interface DashboardProps {
   onAuthRequired: (action: () => void) => void
-  isAuthenticated: boolean
-  onLogout: () => void
-  onLoginClick: () => void
 }
 
-export default function EnhancedDashboard({ onAuthRequired, isAuthenticated, onLogout, onLoginClick }: DashboardProps) {
+export default function EnhancedDashboard({ onAuthRequired }: DashboardProps) {
   const [activeSection, setActiveSection] = useState("home")
 
   const renderSection = () => {
@@ -60,9 +57,9 @@ export default function EnhancedDashboard({ onAuthRequired, isAuthenticated, onL
       <Navbar
         activeSection={activeSection}
         setActiveSection={setActiveSection}
-        isAuthenticated={isAuthenticated}
-        onLogout={onLogout}
-        onLoginClick={onLoginClick}
+        isAuthenticated={false}
+        onLogout={() => {}}
+        onLoginClick={() => {}}
       />
       <main className="pt-14 sm:pt-16 flex-1">{renderSection()}</main>
       <SimpleFooter />

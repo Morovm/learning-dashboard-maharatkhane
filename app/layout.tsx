@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { AuthProvider } from "@/contexts/auth-context"
 import { Toaster } from "@/components/ui/sonner"
 
 const geist = Geist({
@@ -52,8 +53,10 @@ export default function RootLayout({
       </head>
       <body className={`${geist.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {children}
-          <Toaster />
+          <AuthProvider>
+            {children}
+            <Toaster />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

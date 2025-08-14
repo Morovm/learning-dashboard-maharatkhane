@@ -1,6 +1,7 @@
 "use client"
 
 import { ExternalLink, PenToolIcon as Tool, Users, BookOpen, Zap } from "lucide-react"
+import DiscoverTalentButton from "./discover-talent-button"
 
 interface ResourcesSectionProps {
   onAuthRequired: (action: () => void) => void
@@ -119,13 +120,12 @@ export default function ResourcesSection({ onAuthRequired }: ResourcesSectionPro
   return (
     <section className="mobile-section bg-gray-900 mobile-container">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 persian-heading mobile-heading-spacing">
-            منابع مفید
-          </h2>
-          <p className="text-lg sm:text-xl text-gray-400 persian-body max-w-3xl mx-auto mobile-text-spacing px-2">
-            ابزارها، منابع آموزشی و جوامعی که در مسیر یادگیری به شما کمک می‌کنند
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 english-text">Resources & Tools</h2>
+          <p className="text-xl text-gray-400 persian-body mb-6">
+            منابع و ابزارهای مفید برای یادگیری و کار با هوش مصنوعی
           </p>
+          <DiscoverTalentButton />
         </div>
 
         <div className="mobile-grid grid-cols-1 md:grid-cols-2">
