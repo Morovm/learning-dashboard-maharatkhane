@@ -1,0 +1,16 @@
+"Modify the existing HTML/CSS/JS code of my single-page website (a learning dashboard for AI projects with sections for Projects, Tutorials, Resources, and Career Consulting) without changing the overall template, themes, fonts, or structure. Ensure the site remains responsive on mobile as on PC, using the existing viewport meta tag and adding media queries only if necessary to maintain consistent fonts and layout across devices.
+Key changes:
+
+Replace the button labeled 'شروع یادگیری' (or any start button) with a new button named 'Discover Talent & Start Learning' (in Persian: 'کشف استعداد و شروع یادگیری'). Display this button in every section (Projects, Tutorials, Resources, Career Consulting) of the single-page site, styled consistently with the existing design. When clicked, if the user is not logged in, show a modal or redirect to a form page requiring user details in Persian: full name, email, username, and password. The form must be entirely in Persian. Prevent access to restricted content (GitHub links and YouTube videos) until the form is submitted. Store user credentials in localStorage (use a simple array of users). For subsequent visits, show a 'Login' button; after entering username and password, grant access if credentials match. For logged-in users, add a green checkmark next to the 'Discover Talent & Start Learning' button (using CSS like .checkmark { color: green; } and ✔) and disable the need to refill the form.
+Restrict access to GitHub links (in the Projects section, e.g., GitHub) and YouTube video links (in the Tutorials section, e.g., Watch Tutorial). Allow all users to view the Projects and Tutorials sections, but clicking GitHub or YouTube links requires login. For non-logged-in users, show a message 'لطفاً ابتدا ثبت‌نام کنید' and redirect to the registration/login form. Pre-allow access for these hardcoded users without registration:
+
+Username: 'Mahdi Morovati', Password: '1'
+Username: 'Parsa Esmaili', Password: '1'
+Username: 'Amirhossein salek', Password: '1'
+Username: 'Erfan Mohammadian', Password: '1'
+Use JavaScript to check login status and control link access.
+
+
+Ensure the 'Discover Talent & Start Learning' button appears in all sections (Projects, Tutorials, Resources, Career Consulting). For logged-in users, show the green checkmark next to it. For non-logged-in users, show the button without the checkmark, prompting registration.
+
+Provide the full updated code (HTML, CSS, JS) ready to deploy. Use simple JavaScript for authentication, no external libraries. Include placeholder links for GitHub and YouTube if not present in the original code."
