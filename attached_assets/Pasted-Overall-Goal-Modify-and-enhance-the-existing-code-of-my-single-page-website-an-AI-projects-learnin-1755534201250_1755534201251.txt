@@ -1,0 +1,90 @@
+Overall Goal: Modify and enhance the existing code of my single-page website (an AI projects learning dashboard) without changing the overall template, theme, fonts, or core structure. The website must remain fully responsive on both mobile and desktop devices.
+
+Part 1: Authentication System and Global Changes
+Main Button Modification:
+
+Change the text of the main call-to-action button from شروع یادگیری to کشف استعداد و شروع یادگیری.
+
+This button must be displayed in all main sections of the site (Projects, Tutorials, Resources, and Career Consulting).
+
+Implement Registration/Login Modal:
+
+When a non-logged-in user clicks the کشف استعداد و شروع یادگیری button, a Modal must open, featuring two tabs: "Register" and "Login".
+
+Registration Form (Tab 1):
+
+Fields: Full Name, Email, Username, and Password. All labels and messages must be in Persian.
+
+Validation: All fields are mandatory. If the user submits the form with any empty field, display a red error message in Persian (e.g., "این فیلد الزامی است") below the respective field and halt the submission process.
+
+Login Form (Tab 2):
+
+Fields: Username and Password.
+
+Data Storage:
+
+Upon successful registration, store the user's information as an object ({fullName, email, username, password}) within an array in the browser's localStorage.
+
+Important Note: Directly saving data to a local .txt file from a browser is not possible due to security restrictions. localStorage is the standard client-side solution for this.
+
+Pre-defined Users: These users must be pre-populated in localStorage to allow them to log in without registering first:
+
+Username: Mahdi Morovati, Password: 1
+
+Username: Parsa Esmaili, Password: 1
+
+Username: Amirhossein salek, Password: 1
+
+Username: Erfan Mohammadian, Password: 1
+
+Logged-in User State:
+
+Display a green checkmark (✔) next to the کشف استعداد و شروع یادگیری button.
+
+Unlock access to restricted content (GitHub and YouTube links).
+
+Clicking the button should no longer open the registration modal.
+
+Part 2: Content Access Restriction
+All GitHub links in the "Projects" section and all YouTube video links in the "Tutorials" section must be restricted.
+
+If a non-logged-in user clicks these links, the link must not open. Instead, display a Persian alert message (e.g., "برای دسترسی به این محتوا، لطفاً ابتدا وارد شوید یا ثبت‌نام کنید.") and then automatically open the Register/Login modal.
+
+Part 3: Complete Redesign of the "Projects" Section
+Transform the "Projects" section into a Tabbed Interface with the following three tabs:
+
+Tab 1: Finalized Projects
+
+This tab will display the site's current list of curated, main projects.
+
+Tab 2: Community Projects
+
+At the top of this tab's content, place a button labeled "Submit Your Project" (ثبت پروژه شما).
+
+Clicking this button should open a modal with a form asking for the Project Title, a Short Description, and the GitHub Link.
+
+User-submitted projects should be stored in a separate array in localStorage.
+
+Display these projects as visually appealing cards within this tab for all visitors to see.
+
+Tab 3: Freelance Opportunities
+
+This section is for employers to post project offers.
+
+Include a button labeled "Post a Project" (ثبت آگهی پروژه).
+
+Clicking it should open a modal with a form containing fields for Project Title, Company Name (Optional), Full Project Description, Proposed Budget (Optional), and a Contact Email.
+
+These listings should also be saved in localStorage and displayed as a list of opportunities in this tab.
+
+Part 4: Enhance the "Career Consulting" Section
+Instead of integrating a complex API, convert this section into a smart, multi-step questionnaire to simulate a consulting experience:
+
+Step 1: Ask the user about their primary field of interest (e.g., provide buttons for Data Science, Web Development, AI Engineering).
+
+Step 2: Based on the previous selection, ask for their experience level (e.g., Beginner, Intermediate, Advanced).
+
+Step 3: Finally, based on their answers, display a results card containing pre-written career advice, links to useful resources, and suggested career paths. This entire logic should be implemented with simple JavaScript conditional statements, requiring no actual AI.
+
+Final Deliverable Requirements:
+Provide the full, deployment-ready code, including HTML, CSS, and JavaScript files. The code must be clean, well-commented, and readable. All logic must be implemented using vanilla JavaScript without any external libraries.
