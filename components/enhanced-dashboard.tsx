@@ -28,13 +28,13 @@ export default function EnhancedDashboard({ onAuthRequired, isAuthenticated, onL
       case "home":
         return (
           <>
-            <EnhancedHeroSection />
+            <EnhancedHeroSection onAuthRequired={onAuthRequired} isAuthenticated={isAuthenticated} />
             <AllProjectsSection onAuthRequired={onAuthRequired} />
             <EnhancedAINews />
           </>
         )
       case "projects":
-        return <AllProjectsSection onAuthRequired={onAuthRequired} />
+        return <EnhancedProjectsSection onAuthRequired={onAuthRequired} isAuthenticated={isAuthenticated} />
       case "learning":
         return <LearningSection onAuthRequired={onAuthRequired} />
       case "resources":
@@ -44,14 +44,13 @@ export default function EnhancedDashboard({ onAuthRequired, isAuthenticated, onL
       case "counseling":
         return (
           <>
-            <EnhancedCareerCounseling />
-            <EnhancedCareerQuiz />
+            <SmartCareerConsulting onAuthRequired={onAuthRequired} isAuthenticated={isAuthenticated} />
           </>
         )
       case "contact":
         return <ContactSection />
       default:
-        return <EnhancedHeroSection />
+        return <EnhancedHeroSection onAuthRequired={onAuthRequired} isAuthenticated={isAuthenticated} />
     }
   }
 

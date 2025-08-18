@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowLeft, Target, TrendingUp, BookOpen } from "lucide-react"
+import { ArrowLeft, Target, TrendingUp, BookOpen, CheckCircle } from "lucide-react"
 import Image from "next/image"
 import MultiStepForm from "./multi-step-form"
 import CourseRecommendations from "./course-recommendations"
@@ -25,13 +25,24 @@ interface FormData {
   educationalInterests: string[]
 }
 
-export default function EnhancedHeroSection() {
+interface EnhancedHeroSectionProps {
+  onAuthRequired: (action: () => void) => void
+  isAuthenticated: boolean
+}
+
+export default function EnhancedHeroSection({ onAuthRequired, isAuthenticated }: EnhancedHeroSectionProps) {
   const [showForm, setShowForm] = useState(false)
   const [showRecommendations, setShowRecommendations] = useState(false)
   const [formData, setFormData] = useState<FormData | null>(null)
 
   const handleStartLearning = () => {
-    setShowForm(true)
+    if (isAuthenticated) {
+      setShowForm(true)
+    } else {
+      onAuthRequired(() => {
+        setShowForm(true)
+      })
+    }
   }
 
   const handleFormComplete = (data: FormData) => {
@@ -76,9 +87,12 @@ export default function EnhancedHeroSection() {
 
             <button 
               onClick={handleStartLearning}
-              className="btn-primary persian-body inline-flex items-center group hover:scale-105 transform transition-all duration-200"
+              className="btn-primary persian-body inline-flex items-center group hover:scale-105 transform transition-all duration-200 relative"
             >
-              شروع یادگیری
+              کشف استعداد و شروع یادگیری
+              {isAuthenticated && (
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-green-400" />
+              )}
               <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
           </div>

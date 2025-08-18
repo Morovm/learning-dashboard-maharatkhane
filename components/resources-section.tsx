@@ -111,9 +111,15 @@ const resourceCategories = [
 
 export default function ResourcesSection({ onAuthRequired }: ResourcesSectionProps) {
   const handleResourceClick = (url: string, title: string) => {
-    onAuthRequired(() => {
+    if (url.includes("youtube.com") || url.includes("youtu.be")) {
+      // Restrict YouTube links
+      onAuthRequired(() => {
+        window.open(url, "_blank")
+      })
+    } else {
+      // Allow other links
       window.open(url, "_blank")
-    })
+    }
   }
 
   return (

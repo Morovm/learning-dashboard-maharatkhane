@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from "react"
 import EnhancedDashboard from "@/components/enhanced-dashboard"
-import LoginModal from "@/components/login-modal"
+import AuthModal from "@/components/auth-modal"
 
 export default function Home() {
-  const [showLoginModal, setShowLoginModal] = useState(false)
+  const [showAuthModal, setShowAuthModal] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null)
 
   useEffect(() => {
-    // Check if user is already logged in
-    const authStatus = localStorage.getItem("isAuthenticated")
-    if (authStatus === "true") {
+    // Check if user is already logged in by checking for currentUser
+    const currentUser = localStorage.getItem("currentUser")
+    if (currentUser) {
       setIsAuthenticated(true)
     }
   }, [])
@@ -22,32 +22,31 @@ export default function Home() {
       action()
     } else {
       setPendingAction(() => action)
-      setShowLoginModal(true)
+      setShowAuthModal(true)
     }
   }
 
   const handleLoginClick = () => {
-    setShowLoginModal(true)
+    setShowAuthModal(true)
   }
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true)
-    setShowLoginModal(false)
+    setShowAuthModal(false)
     if (pendingAction) {
       pendingAction()
       setPendingAction(null)
     }
-    localStorage.setItem("isAuthenticated", "true")
   }
 
-  const handleLoginCancel = () => {
-    setShowLoginModal(false)
+  const handleAuthCancel = () => {
+    setShowAuthModal(false)
     setPendingAction(null)
   }
 
   const handleLogout = () => {
     setIsAuthenticated(false)
-    localStorage.removeItem("isAuthenticated")
+    localStorage.removeItem("currentUser")
   }
 
   return (
@@ -59,7 +58,7 @@ export default function Home() {
         onLoginClick={handleLoginClick}
       />
 
-      {showLoginModal && <LoginModal onLoginSuccess={handleLoginSuccess} onCancel={handleLoginCancel} />}
+      {showAuthModal && <AuthModal onClose={handleAuthCancel} onLoginSuccess={handleLoginSuccess} />}
     </>
   )
 }
