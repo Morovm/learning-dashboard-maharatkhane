@@ -18,7 +18,7 @@ interface User {
 const predefinedUsers: User[] = [
   { fullName: "مهدی مروتی", email: "mahdi@example.com", username: "Mahdi Morovati", password: "1" },
   { fullName: "پارسا اسماعیلی", email: "parsa@example.com", username: "Parsa Esmaili", password: "1" },
-  { fullName: "امیرحسین سالک", email: "amirhossein@example.com", username: "Amirhossein salek", password: "1" },
+  { fullName: "امیرحسین سالک", email: "amirhossein@example.com", username: "Amirhossein Salek", password: "1" },
   { fullName: "عرفان محمدیان", email: "erfan@example.com", username: "Erfan Mohammadian", password: "1" }
 ]
 

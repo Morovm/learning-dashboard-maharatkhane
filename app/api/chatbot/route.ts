@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const ***REMOVED***Api = new HuggingFaceAPI()
+    const hfApi = new HuggingFaceAPI()
     
     // Create a context-aware prompt in Persian
     const contextPrompt = `شما یک دستیار هوشمند برای موسسه آموزشی مهارتخانه البرز هستید. این موسسه دوره‌های هوش مصنوعی، تحلیل داده، تولید محتوا و مهارت‌های دیجیتال ارائه می‌دهد. 
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
 
 لطفاً پاسخی مفید، دوستانه و مرتبط با آموزش و هوش مصنوعی به فارسی ارائه دهید:`
 
-    const response = await ***REMOVED***Api.generateText(contextPrompt, 'gpt2')
+    const response = await hfApi.generateText(contextPrompt, 'gpt2')
     
     // Clean up the response and ensure it's in Persian context
     let cleanResponse = response.replace(contextPrompt, '').trim()

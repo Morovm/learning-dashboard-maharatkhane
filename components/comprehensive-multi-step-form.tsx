@@ -62,6 +62,11 @@ export default function ComprehensiveMultiStepForm({ onComplete, onClose }: Comp
   const totalSteps = 5
 
   const nextStep = () => {
+    // Validate current step before proceeding
+    const currentStepData = getCurrentStepData()
+    if (!validateCurrentStep(currentStepData)) {
+      return
+    }
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1)
     }
@@ -70,6 +75,74 @@ export default function ComprehensiveMultiStepForm({ onComplete, onClose }: Comp
   const prevStep = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1)
+    }
+  }
+
+  const getCurrentStepData = () => {
+    const formData = watch()
+    switch (currentStep) {
+      case 1:
+        return {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          age: formData.age,
+          educationLevel: formData.educationLevel,
+          fieldOfStudy: formData.fieldOfStudy,
+          facultyUniversity: formData.facultyUniversity,
+          physicalCondition: formData.physicalCondition,
+          phoneNumber: formData.phoneNumber,
+          provinceOfResidence: formData.provinceOfResidence,
+          address: formData.address
+        }
+      case 2:
+        return {
+          jobExperience: formData.jobExperience,
+          currentOccupation: formData.currentOccupation,
+          jobPosition: formData.jobPosition
+        }
+      case 3:
+        return {
+          coursesAttended: formData.coursesAttended,
+          onlineCoursesAttended: formData.onlineCoursesAttended,
+          digitalToolsFamiliarity: formData.digitalToolsFamiliarity,
+          educationalInterests: formData.educationalInterests,
+          trainingNeeds: formData.trainingNeeds
+        }
+      case 4:
+        return {
+          englishCoursesAttended: formData.englishCoursesAttended
+        }
+      case 5:
+        return {
+          articles: formData.articles,
+          books: formData.books,
+          researchPapers: formData.researchPapers,
+          competitions: formData.competitions
+        }
+      default:
+        return {}
+    }
+  }
+
+  const validateCurrentStep = (stepData: any) => {
+    switch (currentStep) {
+      case 1:
+        const requiredFields1 = ['firstName', 'lastName', 'age', 'educationLevel', 'fieldOfStudy', 'facultyUniversity', 'physicalCondition', 'phoneNumber', 'provinceOfResidence', 'address']
+        return requiredFields1.every(field => stepData[field] && stepData[field].toString().trim())
+      case 2:
+        // Work domain is optional, allow progression
+        return true
+      case 3:
+        // Skills section is optional, allow progression
+        return true
+      case 4:
+        // English proficiency is optional, allow progression
+        return true
+      case 5:
+        // Research section is optional, allow progression
+        return true
+      default:
+        return true
     }
   }
 
@@ -229,7 +302,7 @@ export default function ComprehensiveMultiStepForm({ onComplete, onClose }: Comp
           </div>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="p-6">
+        <div className="p-6">
           {/* Section 1: Personal Information */}
           {currentStep === 1 && (
             <div className="space-y-4">
@@ -512,16 +585,18 @@ export default function ComprehensiveMultiStepForm({ onComplete, onClose }: Comp
                 <ChevronLeft className="w-4 h-4 mr-2" />
               </button>
             ) : (
-              <button
-                type="submit"
+              <form onSubmit={handleSubmit(onSubmit)} className="inline">
+                <button
+                  type="submit"
                 className="flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 persian-body font-medium"
-              >
+                >
                 <CheckCircle className="w-4 h-4 ml-2" />
                 ثبت نهایی
-              </button>
+                </button>
+              </form>
             )}
           </div>
-        </form>
+        </div>
       </div>
     </div>
   )

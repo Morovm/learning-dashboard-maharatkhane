@@ -1,137 +1,158 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+"use client"
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-gray-900 text-white;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-  }
+import { useState } from "react"
+import { ArrowLeft, Target, TrendingUp, BookOpen, CheckCircle } from "lucide-react"
+import Image from "next/image"
+import MultiStepForm from "./multi-step-form"
+import CourseRecommendations from "./course-recommendations"
 
-  /* Ensure all Persian text uses Vazirmatn consistently */
-  .persian-text,
-  [lang="fa"],
-  .persian-text *,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Vazirmatn", sans-serif !important;
-    font-size: 14px;
-  }
-
-  .english-text {
-    font-family: "Inter", sans-serif !important;
-    font-size: 14px;
-  }
-
-  /* Override any conflicting font declarations */
-  button,
-  input,
-  textarea,
-  select {
-    font-family: inherit;
-    font-size: 14px;
-  }
-
-  /* Specific Persian text styling */
-  .persian-heading {
-    font-family: "Vazirmatn", sans-serif !important;
-    font-weight: 600;
-    font-size: 14px;
-  }
-
-  .persian-body {
-    font-family: "Vazirmatn", sans-serif !important;
-    font-weight: 400;
-    font-size: 14px;
-  }
-
-  /* Mobile-first responsive text spacing */
-  .mobile-text-spacing {
-    line-height: 1.8;
-    letter-spacing: 0.02em;
-    font-size: 14px;
-  }
-
-  .mobile-heading-spacing {
-    line-height: 1.4;
-    letter-spacing: 0.01em;
-    font-size: 14px;
-  }
-
-  /* Line clamp utilities */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+interface FormData {
+  firstName: string
+  lastName: string
+  gender: string
+  educationLevel: string
+  fieldOfStudy: string
+  employmentStatus: string
+  contactNumber: string
+  province: string
+  age: number
+  jobHistory: string
+  currentRole: string
+  yearsOfExperience: number
+  coursesAttended: string[]
+  competitions: string[]
+  aiToolsFamiliarity: string[]
+  educationalInterests: string[]
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 sm:px-6 sm:py-3 rounded-lg transition-colors duration-200 font-medium text-sm sm:text-base;
-    font-family: "Vazirmatn", sans-serif !important;
+interface EnhancedHeroSectionProps {
+  onAuthRequired: (action: () => void) => void
+  isAuthenticated: boolean
+}
+
+export default function EnhancedHeroSection({ onAuthRequired, isAuthenticated }: EnhancedHeroSectionProps) {
+  const [showForm, setShowForm] = useState(false)
+  const [showRecommendations, setShowRecommendations] = useState(false)
+  const [formData, setFormData] = useState<FormData | null>(null)
+
+  const handleStartLearning = () => {
+    if (isAuthenticated) {
+      setShowForm(true)
+    } else {
+      onAuthRequired(() => {
+        setShowForm(true)
+      })
+    }
   }
 
-  .btn-secondary {
-    @apply bg-gray-700 hover:bg-gray-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg transition-colors duration-200 text-sm sm:text-base;
-    font-family: "Vazirmatn", sans-serif !important;
+  const handleFormComplete = (data: FormData) => {
+    setFormData(data)
+    setShowForm(false)
+    setShowRecommendations(true)
   }
 
-  .btn-login {
-    @apply bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-2 sm:px-4 sm:py-2 rounded-lg transition-colors duration-200 font-medium text-sm sm:text-base;
-    font-family: "Vazirmatn", sans-serif !important;
+  const handleCloseForm = () => {
+    setShowForm(false)
   }
 
-  .card {
-    @apply bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6 hover:border-yellow-500 transition-all duration-200;
+  const handleCloseRecommendations = () => {
+    setShowRecommendations(false)
+    setFormData(null)
   }
 
-  .input-field {
-    @apply w-full px-3 py-3 sm:px-4 sm:py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-yellow-500 focus:outline-none transition-colors duration-200 text-sm sm:text-base;
-    font-family: "Vazirmatn", sans-serif !important;
-  }
+  return (
+    <>
+      <section className="bg-gradient-to-br from-gray-900 via-yellow-900/20 to-gray-900 mobile-section mobile-container">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="flex justify-center mb-4 sm:mb-6">
+              <div className="p-3 sm:p-4 bg-yellow-500 rounded-full">
+                <Image
+                  src="/logo.jpg"
+                  alt="مهارت خانه البرز"
+                  width={48}
+                  height={48}
+                  className="w-8 h-8 sm:w-12 sm:h-12 rounded-full object-cover"
+                />
+              </div>
+            </div>
 
-  .mobile-container {
-    @apply px-4 sm:px-6 lg:px-8;
-  }
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 english-text mobile-heading-spacing">
+              Learning Dashboard for AI Projects
+            </h1>
 
-  .mobile-section {
-    @apply py-12 sm:py-16 lg:py-20;
-  }
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-6 sm:mb-8 persian-body max-w-4xl mx-auto leading-relaxed mobile-text-spacing px-2">
+              با ما، راحت‌ترین پروژه‌های هوش مصنوعی را بیابید و با یادگیری مهارت‌های لازم، درآمد مناسبی کسب کنید.
+            </p>
 
-  .mobile-grid {
-    @apply grid gap-4 sm:gap-6 lg:gap-8;
-  }
+            <button 
+              onClick={handleStartLearning}
+              className="btn-primary persian-body inline-flex items-center group hover:scale-105 transform transition-all duration-200 relative"
+            >
+              کشف استعداد و شروع یادگیری
+              {isAuthenticated && (
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-green-400" />
+              )}
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:translate-x-1 transition-transform duration-200" />
+            </button>
+          </div>
 
-  /* Smooth accordion animations */
-  .accordion-content {
-    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-  }
+          {/* Feature Cards */}
+          <div className="mobile-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-12 sm:mt-16">
+            <div className="card text-center group hover:border-yellow-500 transition-all duration-300">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-200">
+                <Target className="w-6 h-6 sm:w-8 sm:h-8 text-black" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 persian-heading mobile-heading-spacing group-hover:text-yellow-400 transition-colors duration-200">
+                پروژه‌های هدفمند
+              </h3>
+              <p className="text-gray-400 persian-body leading-relaxed mobile-text-spacing text-sm sm:text-base">
+                پروژه‌های عملی و کاربردی که مستقیماً به درآمدزایی منجر می‌شوند
+              </p>
+            </div>
 
-  .accordion-content.expanded {
-    max-height: 1000px;
-    opacity: 1;
-  }
+            <div className="card text-center group hover:border-yellow-500 transition-all duration-300">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-200">
+                <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-black" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 persian-heading mobile-heading-spacing group-hover:text-yellow-400 transition-colors duration-200">
+                آموزش جامع
+              </h3>
+              <p className="text-gray-400 persian-body leading-relaxed mobile-text-spacing text-sm sm:text-base">
+                راهنمای گام به گام برای تسلط بر ابزارها و تکنیک‌های هوش مصنوعی
+              </p>
+            </div>
 
-  .accordion-content.collapsed {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-  }
+            <div className="card text-center sm:col-span-2 lg:col-span-1 group hover:border-yellow-500 transition-all duration-300">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-200">
+                <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-black" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 persian-heading mobile-heading-spacing group-hover:text-yellow-400 transition-colors duration-200">
+                رشد مداوم
+              </h3>
+              <p className="text-gray-400 persian-body leading-relaxed mobile-text-spacing text-sm sm:text-base">
+                به‌روزرسانی مداوم محتوا و پیگیری آخرین روندهای بازار
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Multi-Step Form Modal */}
+      {showForm && (
+        <MultiStepForm
+          onComplete={handleFormComplete}
+          onClose={handleCloseForm}
+        />
+      )}
+
+      {/* Course Recommendations Modal */}
+      {showRecommendations && formData && (
+        <CourseRecommendations
+          formData={formData}
+          onClose={handleCloseRecommendations}
+        />
+      )}
+    </>
+  )
 }

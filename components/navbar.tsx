@@ -18,6 +18,7 @@ const navItems = [
   { id: "projects", label: "پروژه‌ها", icon: FolderOpen },
   { id: "learning", label: "آموزش‌ها", icon: BookOpen },
   { id: "teacher-assistant", label: "دستیار مدرسین", icon: GraduationCap },
+  { id: "teacher-assistant", label: "دستیار مدرسین", icon: GraduationCap },
   { id: "resources", label: "منابع", icon: Library },
   { id: "news", label: "اخبار AI", icon: Newspaper },
   { id: "counseling", label: "مشاوره شغلی", icon: Briefcase },

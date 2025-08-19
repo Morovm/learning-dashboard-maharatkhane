@@ -3,27 +3,10 @@
 import { useState } from "react"
 import { ArrowLeft, Target, TrendingUp, BookOpen, CheckCircle } from "lucide-react"
 import Image from "next/image"
-import MultiStepForm from "./multi-step-form"
-import CourseRecommendations from "./course-recommendations"
+import ComprehensiveMultiStepForm from "./comprehensive-multi-step-form"
+import TalentDiscoveryResults from "./talent-discovery-results"
 
-interface FormData {
-  firstName: string
-  lastName: string
-  gender: string
-  educationLevel: string
-  fieldOfStudy: string
-  employmentStatus: string
-  contactNumber: string
-  province: string
-  age: number
-  jobHistory: string
-  currentRole: string
-  yearsOfExperience: number
-  coursesAttended: string[]
-  competitions: string[]
-  aiToolsFamiliarity: string[]
-  educationalInterests: string[]
-}
+import { useEffect } from "react"
 
 interface EnhancedHeroSectionProps {
   onAuthRequired: (action: () => void) => void
@@ -33,7 +16,16 @@ interface EnhancedHeroSectionProps {
 export default function EnhancedHeroSection({ onAuthRequired, isAuthenticated }: EnhancedHeroSectionProps) {
   const [showForm, setShowForm] = useState(false)
   const [showRecommendations, setShowRecommendations] = useState(false)
-  const [formData, setFormData] = useState<FormData | null>(null)
+  const [formData, setFormData] = useState<any>(null)
+  const [userScore, setUserScore] = useState<number>(0)
+  const [recommendations, setRecommendations] = useState<string[]>([])
+  const [hasCompletedForm, setHasCompletedForm] = useState(false)
+
+  useEffect(() => {
+    // Check if user has completed the form
+    const completed = localStorage.getItem("userFormCompleted")
+    setHasCompletedForm(completed === "true")
+  }, [])
 
   const handleStartLearning = () => {
     if (isAuthenticated) {
@@ -45,10 +37,13 @@ export default function EnhancedHeroSection({ onAuthRequired, isAuthenticated }:
     }
   }
 
-  const handleFormComplete = (data: FormData) => {
+  const handleFormComplete = (data: any, score: number, recs: string[]) => {
     setFormData(data)
+    setUserScore(score)
+    setRecommendations(recs)
     setShowForm(false)
     setShowRecommendations(true)
+    setHasCompletedForm(true)
   }
 
   const handleCloseForm = () => {
@@ -58,6 +53,8 @@ export default function EnhancedHeroSection({ onAuthRequired, isAuthenticated }:
   const handleCloseRecommendations = () => {
     setShowRecommendations(false)
     setFormData(null)
+    setUserScore(0)
+    setRecommendations([])
   }
 
   return (
@@ -90,7 +87,7 @@ export default function EnhancedHeroSection({ onAuthRequired, isAuthenticated }:
               className="btn-primary persian-body inline-flex items-center group hover:scale-105 transform transition-all duration-200 relative"
             >
               کشف استعداد و شروع یادگیری
-              {isAuthenticated && (
+              {isAuthenticated && hasCompletedForm && (
                 <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-green-400" />
               )}
               <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:translate-x-1 transition-transform duration-200" />
@@ -140,7 +137,7 @@ export default function EnhancedHeroSection({ onAuthRequired, isAuthenticated }:
 
       {/* Multi-Step Form Modal */}
       {showForm && (
-        <MultiStepForm
+        <ComprehensiveMultiStepForm
           onComplete={handleFormComplete}
           onClose={handleCloseForm}
         />
@@ -148,8 +145,10 @@ export default function EnhancedHeroSection({ onAuthRequired, isAuthenticated }:
 
       {/* Course Recommendations Modal */}
       {showRecommendations && formData && (
-        <CourseRecommendations
+        <TalentDiscoveryResults
           formData={formData}
+          score={userScore}
+          recommendations={recommendations}
           onClose={handleCloseRecommendations}
         />
       )}
