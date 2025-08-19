@@ -73,7 +73,7 @@ export default function CareerQuiz({ role, onComplete, onClose }: CareerQuizProp
     
     setIsSubmitting(true)
     let totalScore = 0
-    const hfApi = new HuggingFaceAPI()
+    const ***REMOVED***Api = new HuggingFaceAPI()
 
     try {
       for (const question of quizData.questions) {
@@ -88,11 +88,11 @@ export default function CareerQuiz({ role, onComplete, onClose }: CareerQuizProp
           }
         } else if (question.type === "short-answer") {
           // Use Hugging Face API to evaluate text answers
-          const score = await hfApi.evaluateText(answer)
+          const score = await ***REMOVED***Api.evaluateText(answer)
           questionScore = Math.round((score / 100) * question.points)
         } else if (question.type === "code") {
           // Use Hugging Face API to evaluate code
-          const score = await hfApi.evaluateCode(answer)
+          const score = await ***REMOVED***Api.evaluateCode(answer)
           questionScore = Math.round((score / 100) * question.points)
         }
 
