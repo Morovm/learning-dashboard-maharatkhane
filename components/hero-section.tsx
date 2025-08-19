@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowLeft, Target, TrendingUp, BookOpen } from "lucide-react"
+import { Target, TrendingUp, BookOpen } from "lucide-react"
 import Image from "next/image"
 
 interface HeroSectionProps {
