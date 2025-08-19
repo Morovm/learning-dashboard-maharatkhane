@@ -48,7 +48,7 @@ export default function EnhancedDashboard({ onAuthRequired }: DashboardProps) {
         )
       case "contact":
         return <ContactSection />
-      case "teacherAssistant":
+      case "teacher-assistant":
         return <TeacherAssistantSection />
       default:
         return <EnhancedHeroSection />

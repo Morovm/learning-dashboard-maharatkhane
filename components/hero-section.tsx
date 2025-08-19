@@ -8,11 +8,7 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ onAuthRequired }: HeroSectionProps) {
-  const handleStartLearning = () => {
-    onAuthRequired(() => {
-      console.log("Starting learning journey...")
-    })
-  }
+  
 
   return (
     <section className="bg-gradient-to-br from-gray-900 via-yellow-900/20 to-gray-900 mobile-section mobile-container">
@@ -38,10 +34,7 @@ export default function HeroSection({ onAuthRequired }: HeroSectionProps) {
             با ما، راحت‌ترین پروژه‌های هوش مصنوعی را بیابید و با یادگیری مهارت‌های لازم، درآمد مناسبی کسب کنید.
           </p>
 
-          <button onClick={handleStartLearning} className="btn-primary persian-body inline-flex items-center group">
-            شروع یادگیری
-            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:translate-x-1 transition-transform duration-200" />
-          </button>
+          
         </div>
 
         {/* Feature Cards */}

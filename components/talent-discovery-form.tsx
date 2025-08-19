@@ -77,19 +77,23 @@ export default function TalentDiscoveryForm({ isOpen, onClose }: TalentDiscovery
     
     switch (currentStep) {
       case 1: // Personal Information
-        if (!formData.firstName) newErrors.push('نام الزامی است')
-        if (!formData.lastName) newErrors.push('نام خانوادگی الزامی است')
-        if (!formData.age) newErrors.push('سن الزامی است')
-        if (!formData.educationLevel) newErrors.push('سطح تحصیلات الزامی است')
+        if (!formData.firstName.trim()) newErrors.push('پر کردن نام الزامی است')
+        if (!formData.lastName.trim()) newErrors.push('پر کردن نام خانوادگی الزامی است')
+        if (!formData.age.trim()) newErrors.push('پر کردن سن الزامی است')
+        if (!formData.educationLevel.trim()) newErrors.push('پر کردن سطح تحصیلات الزامی است')
+        if (!formData.phoneNumber.trim()) newErrors.push('پر کردن شماره تلفن الزامی است')
+        if (!formData.province.trim()) newErrors.push('پر کردن استان الزامی است')
         break
       case 2: // Work Domain
-        if (!formData.jobExperience) newErrors.push('تجربه کاری الزامی است')
+        if (!formData.jobExperience.trim()) newErrors.push('پر کردن تجربه کاری الزامی است')
+        if (!formData.currentOccupation.trim()) newErrors.push('پر کردن شغل فعلی الزامی است')
         break
       case 3: // Skills
-        if (!formData.interests) newErrors.push('علایق الزامی است')
+        if (!formData.interests.trim()) newErrors.push('پر کردن علایق الزامی است')
+        if (!formData.digitalToolsFamiliarity.trim()) newErrors.push('پر کردن آشنایی با ابزارهای دیجیتال الزامی است')
         break
       case 4: // English
-        if (!formData.englishCourses) newErrors.push('وضعیت دوره‌های انگلیسی الزامی است')
+        if (!formData.englishCourses.trim()) newErrors.push('پر کردن وضعیت دوره‌های انگلیسی الزامی است')
         break
       case 5: // Research
         // Optional fields
@@ -252,6 +256,35 @@ export default function TalentDiscoveryForm({ isOpen, onClose }: TalentDiscovery
                 placeholder="نام دانشکده یا دانشگاه خود را وارد کنید"
               />
             </div>
+            
+            <div>
+              <Label className="text-gray-300 persian-body">شماره تلفن *</Label>
+              <Input
+                value={formData.phoneNumber}
+                onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
+                className="persian-body"
+                placeholder="شماره تلفن خود را وارد کنید"
+              />
+            </div>
+            
+            <div>
+              <Label className="text-gray-300 persian-body">استان *</Label>
+              <Select onValueChange={(value) => handleInputChange('province', value)}>
+                <SelectTrigger className="persian-body">
+                  <SelectValue placeholder="استان خود را انتخاب کنید" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="البرز">البرز</SelectItem>
+                  <SelectItem value="تهران">تهران</SelectItem>
+                  <SelectItem value="اصفهان">اصفهان</SelectItem>
+                  <SelectItem value="فارس">فارس</SelectItem>
+                  <SelectItem value="خراسان رضوی">خراسان رضوی</SelectItem>
+                  <SelectItem value="آذربایجان شرقی">آذربایجان شرقی</SelectItem>
+                  <SelectItem value="خوزستان">خوزستان</SelectItem>
+                  <SelectItem value="مازندران">مازندران</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         )
       
@@ -320,7 +353,17 @@ export default function TalentDiscoveryForm({ isOpen, onClose }: TalentDiscovery
             </div>
             
             <div>
-              <Label className="text-gray-300 persian-body">علایق آموزشی و مهارتی</Label>
+              <Label className="text-gray-300 persian-body">آشنایی با ابزارهای دیجیتال *</Label>
+              <Textarea
+                value={formData.digitalToolsFamiliarity}
+                onChange={(e) => handleInputChange('digitalToolsFamiliarity', e.target.value)}
+                className="persian-body"
+                placeholder="میزان آشنایی خود با ابزارهای دیجیتال و کامپیوتری را شرح دهید"
+              />
+            </div>
+            
+            <div>
+              <Label className="text-gray-300 persian-body">علایق آموزشی و مهارتی *</Label>
               <Textarea
                 value={formData.interests}
                 onChange={(e) => handleInputChange('interests', e.target.value)}

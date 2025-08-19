@@ -177,7 +177,7 @@ export default function AllProjectsSection({ onAuthRequired }: AllProjectsSectio
                   : 'text-gray-300 hover:text-white'
               }`}
             >
-              پروژه‌های جامعه
+              پروژه‌های عمومی
             </button>
             <button
               onClick={() => setActiveTab('freelance')}
@@ -286,7 +286,7 @@ export default function AllProjectsSection({ onAuthRequired }: AllProjectsSectio
                 onClick={() => setShowProjectModal(true)}
                 className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
-                ثبت پروژه جدید توسط جامعه
+                ثبت پروژه شما
               </button>
             </div>
           </div>

@@ -19,10 +19,10 @@ const navItems = [
   { id: "home", label: "خانه", icon: Home },
   { id: "projects", label: "پروژه‌ها", icon: FolderOpen },
   { id: "learning", label: "آموزش", icon: BookOpen },
+  { id: "teacher-assistant", label: "دستیار مدرسین", icon: BookOpen },
   { id: "resources", label: "منابع", icon: Library },
   { id: "news", label: "اخبار", icon: Newspaper },
   { id: "counseling", label: "مشاوره شغلی", icon: Briefcase },
-  { id: "teacher-assistant", label: "دستیار مدرسین", icon: BookOpen },
   { id: "contact", label: "تماس", icon: Mail },
 ]
 
