@@ -1,0 +1,204 @@
+Modify and enhance the existing single-page AI learning dashboard website according to the following requirements.
+Do not change the overall template, theme, fonts, responsiveness, or structure.
+All code must be clean, well-commented, and implemented in vanilla HTML, CSS, and JavaScript only.
+
+🔹 Global Changes
+
+Main Button Replacement
+
+Remove all old buttons labeled "شروع یادگیری" and "مشاهده پروژه‌ها".
+
+Replace them with a single button labeled:
+"کشف استعداد و شروع یادگیری".
+
+This button must appear in all main sections: Projects, Tutorials, Resources, and Career Consulting.
+
+Authentication System (Modal)
+
+When a non-logged-in user clicks "کشف استعداد و شروع یادگیری", open a modal with two tabs:
+
+Register (ثبت‌نام)
+
+Fields: Full Name, Email, Username, Password (all labels/messages in Persian).
+
+Validation: All fields required. Show Persian error (e.g., "این فیلد الزامی است") if empty.
+
+On success: Save user as object {fullName, email, username, password} in localStorage.
+
+Login (ورود)
+
+Fields: Username, Password.
+
+Pre-defined guest users (must be pre-loaded in localStorage):
+
+username: "Mahdi Morovati", password: "1"
+
+username: "Parsa Esmaili", password: "1"
+
+username: "Erfan Mohammadian", password: "1"
+
+username: "Amirhossein Salek", password: "1"
+
+Logged-in state:
+
+Show a green checkmark ✔ next to the main button.
+
+Unlock restricted content (GitHub/YouTube).
+
+Button no longer opens the modal.
+
+Content Access Restriction
+
+All GitHub links in Projects and YouTube links in Tutorials must be restricted.
+
+If user is not logged in → show Persian alert:
+"برای دسترسی به این محتوا، لطفاً ابتدا وارد شوید یا ثبت‌نام کنید."
+
+Then automatically open the Register/Login modal.
+
+🔹 Talent Discovery and Learning Form
+
+When user clicks کشف استعداد و شروع یادگیری after login, show a multi-step form (based on PDF structure):
+
+Section 1 – Personal Information
+
+First Name
+
+Last Name
+
+Age
+
+Education Level
+
+Field of Study
+
+Faculty / University
+
+Physical Condition
+
+Phone Number
+
+Province of Residence
+
+Address
+
+Section 2 – Work Domain
+
+Job Experience
+
+Current Occupation
+
+Job Position
+
+Section 3 – Individual Skills and Abilities
+
+Courses attended so far
+
+Online courses attended so far
+
+Familiarity with digital tools and computer systems
+
+Interests in educational and skill-based fields
+
+Training needs
+
+Section 4 – English Proficiency
+
+English courses attended
+
+Section 5 – Research and Scientific Works
+
+Articles
+
+Books
+
+Research papers
+
+Competitions
+
+Rules:
+
+User cannot proceed without completing the current section.
+
+After final submission → system assigns a score based on responses.
+
+Recommend relevant courses using simple AI-like evaluation logic (e.g., if user has strong English and research → suggest academic/research courses).
+
+Save all form data in a file named after the user’s username (use localStorage as file storage).
+
+🔹 Projects Section (Complete Redesign → Tabbed Interface)
+
+Turn Projects into three tabs:
+
+Finalized Projects
+
+Show curated, main projects (existing list).
+
+Community Projects
+
+Add button "ثبت پروژه شما".
+
+Opens modal with fields: Project Title, Short Description, GitHub Link.
+
+Save in localStorage → display as project cards.
+
+Freelance Opportunities
+
+Add button "ثبت آگهی پروژه".
+
+Opens modal with fields: Project Title, Company Name (optional), Full Description, Proposed Budget (optional), Contact Email.
+
+Save in localStorage → display as job listings.
+
+🔹 Career Consulting Section
+
+Convert into multi-step questionnaire:
+
+Step 1: Ask for field of interest (buttons: Data Science, Web Development, AI Engineering).
+
+Step 2: Ask for experience level (Beginner, Intermediate, Advanced).
+
+Step 3: Show a results card with:
+
+Career advice
+
+Useful links/resources
+
+Suggested career paths
+(Simple if/else conditions in JavaScript, no external AI).
+
+🔹 Teacher Assistant Section (“دستیار مدرسین”)
+
+Add a new header menu item: "دستیار مدرسین".
+
+Instructors can upload lecture notes (files).
+
+System sends them to NotebookLM (or similar API) via an intermediary program.
+
+Fetch and display generated outputs (videos, podcasts).
+
+🔹 Registration Requirement Rules
+
+Registration/Login required for:
+
+Accessing job counselling
+
+Uploading projects
+
+Viewing educational materials
+
+After registration → show green tick ✔ next to "کشف استعداد و شروع یادگیری".
+
+Unregistered users should not see this tick.
+
+🔹 Final Deliverable
+
+Provide deployment-ready code with HTML, CSS, JavaScript.
+
+Must remain fully responsive (mobile + desktop).
+
+All labels/messages in Persian.
+
+No external libraries.
+
+Save all user/project data in localStorage.
