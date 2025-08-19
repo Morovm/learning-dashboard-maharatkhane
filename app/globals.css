@@ -9,6 +9,7 @@
   body {
     @apply bg-gray-900 text-white;
     font-family: "Inter", sans-serif;
+    font-size: 14px;
   }
 
   /* Ensure all Persian text uses Vazirmatn consistently */
@@ -22,10 +23,12 @@
   h5,
   h6 {
     font-family: "Vazirmatn", sans-serif !important;
+    font-size: 14px;
   }
 
   .english-text {
     font-family: "Inter", sans-serif !important;
+    font-size: 14px;
   }
 
   /* Override any conflicting font declarations */
@@ -34,28 +37,33 @@
   textarea,
   select {
     font-family: inherit;
+    font-size: 14px;
   }
 
   /* Specific Persian text styling */
   .persian-heading {
     font-family: "Vazirmatn", sans-serif !important;
     font-weight: 600;
+    font-size: 14px;
   }
 
   .persian-body {
     font-family: "Vazirmatn", sans-serif !important;
     font-weight: 400;
+    font-size: 14px;
   }
 
   /* Mobile-first responsive text spacing */
   .mobile-text-spacing {
     line-height: 1.8;
     letter-spacing: 0.02em;
+    font-size: 14px;
   }
 
   .mobile-heading-spacing {
     line-height: 1.4;
     letter-spacing: 0.01em;
+    font-size: 14px;
   }
 
   /* Line clamp utilities */

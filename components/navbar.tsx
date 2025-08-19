@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X, LogOut, Home, FolderOpen, BookOpen, Library, Mail, LogIn, Newspaper, Briefcase } from "lucide-react"
+import { Menu, X, LogOut, Home, FolderOpen, BookOpen, Library, Mail, LogIn, Newspaper, Briefcase, GraduationCap } from "lucide-react"
 import Image from "next/image"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
@@ -17,6 +17,7 @@ const navItems = [
   { id: "home", label: "خانه", icon: Home },
   { id: "projects", label: "پروژه‌ها", icon: FolderOpen },
   { id: "learning", label: "آموزش‌ها", icon: BookOpen },
+  { id: "teacher-assistant", label: "دستیار مدرسین", icon: GraduationCap },
   { id: "resources", label: "منابع", icon: Library },
   { id: "news", label: "اخبار AI", icon: Newspaper },
   { id: "counseling", label: "مشاوره شغلی", icon: Briefcase },
