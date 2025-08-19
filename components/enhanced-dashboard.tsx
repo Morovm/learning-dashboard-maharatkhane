@@ -12,6 +12,7 @@ import EnhancedCareerQuiz from "./enhanced-career-quiz"
 import AllProjectsSection from "./all-projects-section"
 import EnhancedAINews from "./enhanced-ai-news"
 import SimpleFooter from "./simple-footer"
+import TeacherAssistantSection from "./teacher-assistant-section"
 
 interface DashboardProps {
   onAuthRequired: (action: () => void) => void
@@ -47,6 +48,8 @@ export default function EnhancedDashboard({ onAuthRequired }: DashboardProps) {
         )
       case "contact":
         return <ContactSection />
+      case "teacherAssistant":
+        return <TeacherAssistantSection />
       default:
         return <EnhancedHeroSection />
     }

@@ -3,45 +3,51 @@
 
 import { useState } from 'react'
 import { useAuth } from '@/contexts/auth-context'
-import { Button } from '@/components/ui/button'
 import { CheckCircle, Sparkles } from 'lucide-react'
 import AuthModal from './auth-modal'
+import TalentDiscoveryForm from './talent-discovery-form'
 
 interface DiscoverTalentButtonProps {
   className?: string
-  size?: 'sm' | 'default' | 'lg'
 }
 
-export default function DiscoverTalentButton({ className = '', size = 'default' }: DiscoverTalentButtonProps) {
+export default function DiscoverTalentButton({ className = '' }: DiscoverTalentButtonProps) {
   const { isAuthenticated } = useAuth()
   const [showAuthModal, setShowAuthModal] = useState(false)
+  const [showTalentForm, setShowTalentForm] = useState(false)
   const [authMode, setAuthMode] = useState<'login' | 'register'>('register')
 
   const handleClick = () => {
-    if (!isAuthenticated) {
+    if (isAuthenticated) {
+      setShowTalentForm(true)
+    } else {
       setShowAuthModal(true)
     }
   }
 
   return (
     <>
-      <Button
+      <button
         onClick={handleClick}
-        className={`bg-yellow-500 hover:bg-yellow-600 text-black persian-body font-medium flex items-center gap-2 ${className}`}
-        size={size}
+        className={`btn-primary persian-body flex items-center justify-center gap-2 ${className}`}
       >
-        <Sparkles className="w-4 h-4" />
+        <Sparkles className="w-5 h-5" />
         کشف استعداد و شروع یادگیری
         {isAuthenticated && (
-          <CheckCircle className="w-4 h-4 text-green-600 checkmark" />
+          <CheckCircle className="w-5 h-5 text-green-400" />
         )}
-      </Button>
+      </button>
 
       <AuthModal
         isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}
         mode={authMode}
         onModeChange={setAuthMode}
+      />
+
+      <TalentDiscoveryForm
+        isOpen={showTalentForm}
+        onClose={() => setShowTalentForm(false)}
       />
     </>
   )

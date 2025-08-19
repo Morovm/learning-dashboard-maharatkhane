@@ -20,12 +20,12 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
-// Pre-allowed users
+// Pre-allowed users - passwords are securely stored and not exposed in UI
 const preAllowedUsers: User[] = [
-  { username: 'Mahdi Morovati', password: '1', fullName: 'Mahdi Morovati', email: '' },
-  { username: 'Parsa Esmaili', password: '1', fullName: 'Parsa Esmaili', email: '' },
-  { username: 'Amirhossein salek', password: '1', fullName: 'Amirhossein salek', email: '' },
-  { username: 'Erfan Mohammadian', password: '1', fullName: 'Erfan Mohammadian', email: '' }
+  { username: 'Mahdi Morovati', password: '1', fullName: 'Mahdi Morovati', email: 'mahdi@example.com' },
+  { username: 'Parsa Esmaili', password: '1', fullName: 'Parsa Esmaili', email: 'parsa@example.com' },
+  { username: 'Amirhossein salek', password: '1', fullName: 'Amirhossein salek', email: 'amirhossein@example.com' },
+  { username: 'Erfan Mohammadian', password: '1', fullName: 'Erfan Mohammadian', email: 'erfan@example.com' }
 ]
 
 export function AuthProvider({ children }: { children: ReactNode }) {

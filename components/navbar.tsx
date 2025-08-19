@@ -18,11 +18,12 @@ interface NavbarProps {
 const navItems = [
   { id: "home", label: "خانه", icon: Home },
   { id: "projects", label: "پروژه‌ها", icon: FolderOpen },
-  { id: "learning", label: "آموزش‌ها", icon: BookOpen },
+  { id: "learning", label: "آموزش", icon: BookOpen },
   { id: "resources", label: "منابع", icon: Library },
-  { id: "news", label: "اخبار AI", icon: Newspaper },
+  { id: "news", label: "اخبار", icon: Newspaper },
   { id: "counseling", label: "مشاوره شغلی", icon: Briefcase },
-  { id: "contact", label: "تماس با ما", icon: Mail },
+  { id: "teacher-assistant", label: "دستیار مدرسین", icon: BookOpen },
+  { id: "contact", label: "تماس", icon: Mail },
 ]
 
 export default function Navbar({
