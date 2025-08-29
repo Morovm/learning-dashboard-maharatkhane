@@ -76,15 +76,11 @@ export default function EnhancedHeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-              <DiscoverTalentButton size="lg" className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl hover:shadow-yellow-500/20 w-full sm:w-auto mobile-button" />
               <button
                 onClick={handleStartLearning}
-                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black font-bold text-base sm:text-lg rounded-xl transition-all duration-300 persian-body w-full sm:w-auto mobile-button"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold text-base sm:text-lg rounded-xl transition-all duration-300 persian-body w-full sm:w-auto mobile-button shadow-lg hover:shadow-xl hover:shadow-yellow-500/20"
               >
-                شروع یادگیری
-              </button>
-              <button className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black font-bold text-base sm:text-lg rounded-xl transition-all duration-300 persian-body w-full sm:w-auto mobile-button">
-                مشاهده پروژه‌ها
+                کشف استعداد و شروع یادگیری
               </button>
             </div>
           </div>

@@ -131,6 +131,16 @@
     min-height: 48px;
   }
 
+  .mobile-nav-spacing {
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-nav-spacing {
+      gap: 0.75rem;
+    }
+  }
+
   .checkmark {
     color: green;
   }

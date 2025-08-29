@@ -46,10 +46,10 @@ export default function Navbar({
   return (
     <nav className="fixed top-0 left-0 right-0 bg-gray-800 border-b border-gray-700 z-50">
       <div className="max-w-7xl mx-auto mobile-container">
-        <div className="flex justify-between items-center h-14 sm:h-16">
+        <div className="flex justify-between items-center h-16 sm:h-18 px-2">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 ml-2 sm:ml-3">
+          <div className="flex-shrink-0 flex items-center max-w-[60%] sm:max-w-none">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 ml-3 sm:ml-4">
               <Image
                 src="/logo.jpg"
                 alt="مهارت خانه البرز"
@@ -58,27 +58,27 @@ export default function Navbar({
                 className="rounded-full object-cover w-full h-full"
               />
             </div>
-            <h1 className="text-sm sm:text-lg lg:text-xl font-bold text-yellow-400 persian-text mobile-heading-spacing">
+            <h1 className="text-xs sm:text-base lg:text-lg font-bold text-yellow-400 persian-text mobile-heading-spacing truncate">
               داشبورد آموزشی مهارتخانه البرز
             </h1>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="flex items-center space-x-3 lg:space-x-4 space-x-reverse">
+            <div className="flex items-center space-x-2 lg:space-x-3 space-x-reverse">
               {navItems.map((item) => {
                 const Icon = item.icon
                 return (
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`flex items-center px-2 py-2 lg:px-3 lg:py-2 rounded-md text-sm font-medium persian-body transition-colors duration-200 ${
+                    className={`flex items-center px-2 py-2 lg:px-3 lg:py-2 rounded-md text-xs lg:text-sm font-medium persian-body transition-colors duration-200 whitespace-nowrap ${
                       activeSection === item.id
                         ? "bg-yellow-500 text-black"
                         : "text-gray-300 hover:bg-gray-700 hover:text-white"
                     }`}
                   >
-                    <Icon className="w-4 h-4 ml-1 lg:ml-2" />
+                    <Icon className="w-3 h-3 lg:w-4 lg:h-4 ml-1 lg:ml-2" />
                     {item.label}
                   </button>
                 )
@@ -86,16 +86,16 @@ export default function Navbar({
 
               {/* Authentication Button */}
               {/* User Account */}
-            <div className="flex items-center space-x-2 space-x-reverse">
+            <div className="flex items-center space-x-2 space-x-reverse ml-2">
               {isAuthenticated ? (
                 <div className="flex items-center space-x-2 space-x-reverse">
-                  <div className="text-sm text-white persian-body">{user?.fullName || user?.username}</div>
+                  <div className="text-xs lg:text-sm text-white persian-body truncate max-w-24">{user?.fullName || user?.username}</div>
                   <button
                     onClick={logout}
                     className="p-2 text-gray-400 hover:text-white transition-colors"
                     title="خروج"
                   >
-                    <LogOut className="w-5 h-5" />
+                    <LogOut className="w-4 h-4" />
                   </button>
                 </div>
               ) : (
@@ -107,7 +107,7 @@ export default function Navbar({
                   className="p-2 text-gray-400 hover:text-white transition-colors"
                   title="ورود"
                 >
-                  <User className="w-5 h-5" />
+                  <User className="w-4 h-4" />
                 </button>
               )}
             </div>

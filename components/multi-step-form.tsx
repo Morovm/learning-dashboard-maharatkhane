@@ -103,14 +103,14 @@ export default function MultiStepForm({ onComplete, onClose }: MultiStepFormProp
 
           {/* Progress Bar */}
           <div className="flex items-center space-x-4 space-x-reverse">
-            {[1, 2, 3].map((step) => (
+            {[1, 2, 3, 4].map((step) => (
               <div key={step} className="flex items-center">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                   step <= currentStep ? 'bg-black text-yellow-500' : 'bg-gray-300 text-gray-600'
                 }`}>
                   {step < currentStep ? <CheckCircle className="w-5 h-5" /> : step}
                 </div>
-                {step < 3 && <div className={`w-12 h-1 ${step < currentStep ? 'bg-black' : 'bg-gray-300'}`} />}
+                {step < 4 && <div className={`w-12 h-1 ${step < currentStep ? 'bg-black' : 'bg-gray-300'}`} />}
               </div>
             ))}
           </div>
@@ -118,6 +118,12 @@ export default function MultiStepForm({ onComplete, onClose }: MultiStepFormProp
           <div className="mt-2 text-sm">
             مرحله {currentStep} از {totalSteps}
           </div>
+          
+          {!validateCurrentStep() && currentStep > 1 && (
+            <div className="mt-2 text-xs text-red-300 persian-body">
+              لطفاً تمام فیلدهای الزامی را پر کنید
+            </div>
+          )}
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="p-6">
@@ -230,6 +236,43 @@ export default function MultiStepForm({ onComplete, onClose }: MultiStepFormProp
           {currentStep === 2 && (
             <div className="space-y-4">
               <div className="flex items-center mb-6">
+                <User className="w-6 h-6 text-yellow-500 ml-3" />
+                <h3 className="text-xl font-semibold persian-heading text-white">اطلاعات حساب کاربری</h3>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2 persian-body">نام کاربری *</label>
+                <input
+                  {...register("username", { required: "نام کاربری الزامی است" })}
+                  className="input-field persian-body"
+                  placeholder="نام کاربری خود را انتخاب کنید"
+                />
+                {errors.username && <p className="text-red-400 text-sm mt-1">{errors.username.message}</p>}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2 persian-body">رمز عبور *</label>
+                <input
+                  type="password"
+                  {...register("password", { required: "رمز عبور الزامی است", minLength: { value: 3, message: "رمز عبور باید حداقل ۳ کاراکتر باشد" } })}
+                  className="input-field persian-body"
+                  placeholder="رمز عبور خود را وارد کنید"
+                />
+                {errors.password && <p className="text-red-400 text-sm mt-1">{errors.password.message}</p>}
+              </div>
+
+              <div className="bg-blue-900/30 border border-blue-500/30 rounded-lg p-4">
+                <p className="text-sm text-blue-300 persian-body">
+                  این اطلاعات برای ایجاد حساب کاربری شما استفاده می‌شود و امکان دسترسی به بخش‌های آموزشی را فراهم می‌کند.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Step 3: Professional Background */}
+          {currentStep === 3 && (
+            <div className="space-y-4">
+              <div className="flex items-center mb-6">
                 <Briefcase className="w-6 h-6 text-yellow-500 ml-3" />
                 <h3 className="text-xl font-semibold persian-heading text-white">سابقه شغلی</h3>
               </div>
@@ -237,20 +280,22 @@ export default function MultiStepForm({ onComplete, onClose }: MultiStepFormProp
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2 persian-body">سابقه کاری</label>
                 <textarea
-                  {...register("jobHistory")}
+                  {...register("jobHistory", { required: "سابقه کاری الزامی است" })}
                   className="input-field persian-body resize-none"
                   rows={4}
                   placeholder="سابقه کاری خود را به طور خلاصه شرح دهید..."
                 />
+                {errors.jobHistory && <p className="text-red-400 text-sm mt-1">{errors.jobHistory.message}</p>}
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2 persian-body">شغل فعلی</label>
                 <input
-                  {...register("currentRole")}
+                  {...register("currentRole", { required: "شغل فعلی الزامی است" })}
                   className="input-field persian-body"
                   placeholder="شغل فعلی خود را وارد کنید"
                 />
+                {errors.currentRole && <p className="text-red-400 text-sm mt-1">{errors.currentRole.message}</p>}
               </div>
 
               <div>
@@ -266,7 +311,7 @@ export default function MultiStepForm({ onComplete, onClose }: MultiStepFormProp
           )}
 
           {/* Step 3: Skills and Interests */}
-          {currentStep === 3 && (
+          {currentStep === 4 && (
             <div className="space-y-6">
               <div className="flex items-center mb-6">
                 <BookOpen className="w-6 h-6 text-yellow-500 ml-3" />
@@ -343,7 +388,12 @@ export default function MultiStepForm({ onComplete, onClose }: MultiStepFormProp
               <button
                 type="button"
                 onClick={nextStep}
-                className="flex items-center px-6 py-3 bg-yellow-500 text-black rounded-lg hover:bg-yellow-600 persian-body font-medium"
+                className={`flex items-center px-6 py-3 rounded-lg persian-body font-medium transition-colors ${
+                  validateCurrentStep() 
+                    ? 'bg-yellow-500 text-black hover:bg-yellow-600 cursor-pointer' 
+                    : 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                }`}
+                disabled={!validateCurrentStep()}
               >
                 بعدی
                 <ChevronLeft className="w-4 h-4 mr-2" />
